@@ -2,7 +2,7 @@
 
 Parses human readable time durations simply and robustly. Gives you a
 regular Python `datetime.timedelta` as output. There are other
-libraries out there that do this, but they never seem over complicated
+libraries out there that do this, but they always seem over complicated
 and yet don't handle the basic formats that I need to deal with.
 
 ## examples
