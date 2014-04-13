@@ -42,8 +42,11 @@ def parse_single(n, u):
 
 
 class Duration(object):
-    def __init__(self, s):
+    def __init__(self, s, seconds=None):
         self.seconds = 0.0
+        if seconds is not None:
+            self.seconds = seconds
+            return
         n_parts = []
         u_parts = []
 
@@ -79,3 +82,42 @@ class Duration(object):
 
     def timedelta(self):
         return timedelta(seconds=self.seconds)
+
+    def __eq__(self, other):
+        return self.seconds == other
+
+    def __ne__(self, other):
+        return self.seconds != other
+
+    def __lt__(self, other):
+        return self.seconds < other
+
+    def __gt__(self, other):
+        return self.seconds > other
+
+    def __add__(self, other):
+        return Duration("", seconds=self.seconds + other)
+
+    def __radd__(self, other):
+        return self.seconds + other
+
+    def __sub__(self, other):
+        return Duration("", seconds=self.seconds - other)
+
+    def __rsub__(self, other):
+        return other - self.seconds
+
+    def __mul__(self, other):
+        return Duration("", seconds=self.seconds * other)
+
+    def __rmul__(self, other):
+        return self.seconds * other
+
+    def __iadd__(self, other):
+        return Duration("", seconds=self.seconds + other)
+
+    def __isub__(self, other):
+        return Duration("", seconds=self.seconds - other)
+
+    def __imul__(self, other):
+        return Duration("", seconds=self.seconds * other)

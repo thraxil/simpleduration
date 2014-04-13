@@ -15,6 +15,14 @@ and yet don't handle the basic formats that I need to deal with.
     100805.0
     >>> Duration("1.5h").timedelta().total_seconds()
     5400.0
+    >>> d1 = Duration("10 minutes")
+    >>> d2 = Duration("20 minutes")
+    >>> d3 = Duration("30 minutes")
+    >>> (d1 + d2) == d3
+    True
+    >>> d1 += d3
+    >>> d1.timedelta().total_seconds()
+    2400.0
 
 ## syntax details
 
